@@ -114,12 +114,13 @@ h2 {
 
 /* Submit knop 7 */
 .submit {
-  position: relative;
+  display: block;
   width: 200px;
   height: 50px;
   margin: 0 auto;
-
-  background: #FFFFFF;
+}
+.submit:hover {
+  color: #8fe507;
 }
 .flex-input {
   display: flex;
