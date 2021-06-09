@@ -18,11 +18,11 @@
           <header>
             <h1>Portfoliosite</h1>
             <?php if ($log == true): ?>
-              <ul style="list-style: none;">
-                <li> <a href="logout.php">Loguit</a>  <?php echo " ".$name ?> </li>
+              <ul style="list-style: none">
+                <li> <a href="logout.php">Loguit</a>  <?php echo "for ".$name ?> </li>
               </ul>
             <?php else: ?>
-              <ul style="list-style: none;">
+              <ul style="list-style: none">
                 <li> <a style="" href="logout.php">Loguit</a> </li>
               </ul>
             <?php endif; ?>

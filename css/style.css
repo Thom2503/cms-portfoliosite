@@ -29,12 +29,12 @@ body {
 main {
   position: absolute;
   width: 848px;
-  height: 640px;
+  /* height: 640px; */
   left: 296px;
   top: 220px;
 
   background: #FFFFFF;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   box-sizing: border-box;
 }
 
@@ -47,7 +47,7 @@ header {
   top: 30px;
 
   background: #FFFFFF;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   box-sizing: border-box;
 }
 
@@ -63,4 +63,80 @@ h1 {
   /* identical to box height */
 
   color: #000000;
+}
+a:hover {
+  color: #8fe507;
+}
+a {
+  color: rgb(102,102,102);
+  text-decoration: none;
+}
+
+/* form css */
+/* Rectangle 12 */
+textarea {
+  position: relative;
+  width: 750px;
+  height: 155px;
+
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+/* Over student */
+h3 {
+  font-family: Noto Sans;
+  /* font-style: normal;
+  font-weight: normal; */
+  font-size: 24px;
+  line-height: 1px;
+
+  color: #000000;
+}
+
+
+/* > Account maken */
+h2 {
+  position: relative;
+  /* width: 292px;
+  height: 49px; */
+
+  font-family: Noto Sans;
+  /* font-style: normal;
+  font-weight: normal; */
+  font-size: 36px;
+  line-height: 5px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+/* Submit knop 7 */
+.submit {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+
+  background: #FFFFFF;
+}
+.flex-input {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.flex-item-left {
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  padding: 10px;
+  flex: 50%;
+}
+
+form {
+  margin: 1.5em;
 }
