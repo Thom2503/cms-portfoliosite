@@ -1,0 +1,66 @@
+/* header {
+  position: relative;
+  margin: 0 auto;
+  width: 53.125em;
+  height: 10.625em;
+  border: 1px solid black;
+} */
+/* MacBook Pro - 1 */
+body {
+  position: relative;
+  width: 1440px;
+  height: 900px;
+
+  background: #FFFFFF;
+  background: url(../img/background.svg);
+}
+
+/* logo 1 */
+.logo {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  left: 35px;
+  top: 20px;
+
+}
+
+/* Rectangle 3 */
+main {
+  position: absolute;
+  width: 848px;
+  height: 640px;
+  left: 296px;
+  top: 220px;
+
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+/* Rectangle 4 */
+header {
+  position: absolute;
+  width: 848px;
+  height: 167px;
+  left: 296px;
+  top: 30px;
+
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+/* Portfoliosite */
+h1 {
+  position: relative;
+
+  font-family: Noto Sans;
+  /* font-style: normal;
+  font-weight: normal; */
+  font-size: 96px;
+  line-height: 8px;
+  /* identical to box height */
+
+  color: #000000;
+}
