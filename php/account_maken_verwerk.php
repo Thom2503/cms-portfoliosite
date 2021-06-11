@@ -12,14 +12,15 @@
   include "../includes/html.php";
   include "config.php";
 
+  //function om errors makkelijker te maken. en maakt het wat mooier uitzien
   function error($message)
   {
     echo $message."<br>";
     echo "<button onclick='history.back(); return false;'>Ga terug</button>";
   }
-  $uuid = uuidv4(); //uuid voor een unique id.
+  $uuid = uuidv4(); //uuid voor een unique id. Komt van uuid.php
 
-  display_header($name = NULL, "Account maken verwerken...", $log = false, $inFolder = true);
+  display_header($name = NULL, "Account maken verwerken...", $log = false, $inFolder = true); //functie voor de rand html, is simpel for mooiheid
 
   //alle opleidingen om te zoeken naar
   $opleidingen = array(1 => "Mediavormgeven" ,
@@ -55,6 +56,10 @@
                 $ID = array_search($opleiding, $opleidingen); //krijg de id van de opleiding
                 if(in_array($opleiding, $opleidingen))
                 {
+
+                  //stmt is for adding to the user table.
+                  //stmt2 is for adding the rest of the info to the user_about table.
+
                   $stmt = mysqli_prepare($mysqli, 'INSERT INTO `users`
                     (`UserID`, `Type`, `Naam`, `Achternaam`, `Email`, `Username`, `Password`, `Opleiding_ID`)
                     VALUES (?,?,?,?,?,?,?,?)');
@@ -66,10 +71,23 @@
 									$result = mysqli_stmt_get_result($stmt);
 
                   mysqli_stmt_execute($stmt);
+                  
+                  // ------------=Dit hier is allemaal stmt2=------------------
+                  $stmt2 = mysqli_prepare($mysqli, 'INSERT INTO `user_info`(`User_ID`, `About`)
+                    VALUES (?, ?)');
+
+									mysqli_stmt_bind_param($stmt2, 'ss', $uuid, $over);
+
+									mysqli_stmt_execute($stmt2);
+
+									$result2 = mysqli_stmt_get_result($stmt2);
+
+                  mysqli_stmt_execute($stmt2);
                   try
                   {
-                    if (!$result)
+                    if (!$result && !$result2)
                     {
+                      //sessions om later te gebruiken.
                       $_SESSION['username'] = $gebruikersnaam;
                       $_SESSION['uuid'] = $uuid;
                       $_SESSION['type'] = $type;
@@ -79,7 +97,7 @@
 
                       mysqli_stmt_close($stmt);
 
-                      
+                      mysqli_stmt_close($stmt2);
 
                     }else
 										{
