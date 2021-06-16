@@ -64,6 +64,7 @@ header {
 /* Portfoliosite */
 h1 {
   position: relative;
+  letter-spacing: -1.5px;
 
   /* font-family: Noto Sans; */
   /* font-style: normal;
@@ -101,6 +102,7 @@ h3 {
   font-weight: normal; */
   font-size: 22px;
   line-height: 1px;
+  letter-spacing: -1.5px;
 
   color: #000000;
 }
@@ -117,6 +119,7 @@ h2 {
   font-weight: normal; */
   font-size: 28px;
   line-height: 5px;
+  letter-spacing: -1.5px;
   /* identical to box height */
 
   color: #000000;
