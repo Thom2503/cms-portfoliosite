@@ -113,7 +113,7 @@ h2 {
 }
 
 /* Submit knop 7 */
-.submit {
+.submit, .inlogveld {
   display: block;
   width: 200px;
   height: 50px;
@@ -140,4 +140,9 @@ h2 {
 
 form {
   margin: 1.5em;
+}
+.centerAlign {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
 }
