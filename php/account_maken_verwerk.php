@@ -48,8 +48,8 @@
 
             $type = 1; //types zijn in dit geval om te kijken wat voor gebruiker het is. 1: student, 2: leraar/admin, 3: bedrijf
 
-            if(!empty($voornaam) && !empty($achternaam) && !empty($email) && !empty($password) &&
-                !empty($gebruikersnaam) && !empty($opleiding) && !empty($over))
+            if(!empty($voornaam) || !empty($achternaam) || !empty($email) || !empty($password) ||
+                !empty($gebruikersnaam) || !empty($opleiding) || !empty($over))
             {
               if (email_validate($email))
               {
@@ -71,7 +71,7 @@
 									$result = mysqli_stmt_get_result($stmt);
 
                   mysqli_stmt_execute($stmt);
-                  
+
                   // ------------=Dit hier is allemaal stmt2=------------------
                   $stmt2 = mysqli_prepare($mysqli, 'INSERT INTO `user_info`(`User_ID`, `About`)
                     VALUES (?, ?)');
