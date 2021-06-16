@@ -5,6 +5,16 @@
   height: 10.625em;
   border: 1px solid black;
 } */
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('../fonts/NimbusSan.ttf');
+}
+
+* {
+  font-family: 'Nimbus Sans', cursive;
+}
+
 /* MacBook Pro - 1 */
 body {
   position: relative;
@@ -55,10 +65,10 @@ header {
 h1 {
   position: relative;
 
-  font-family: Noto Sans;
+  /* font-family: Noto Sans; */
   /* font-style: normal;
   font-weight: normal; */
-  font-size: 96px;
+  font-size: 92px;
   line-height: 8px;
   /* identical to box height */
 
@@ -86,10 +96,10 @@ textarea {
 
 /* Over student */
 h3 {
-  font-family: Noto Sans;
+  /* font-family: Noto Sans; */
   /* font-style: normal;
   font-weight: normal; */
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1px;
 
   color: #000000;
@@ -102,10 +112,10 @@ h2 {
   /* width: 292px;
   height: 49px; */
 
-  font-family: Noto Sans;
+  /* font-family: Noto Sans; */
   /* font-style: normal;
   font-weight: normal; */
-  font-size: 36px;
+  font-size: 28px;
   line-height: 5px;
   /* identical to box height */
 

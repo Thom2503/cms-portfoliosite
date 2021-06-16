@@ -13,8 +13,10 @@
           <title><?php echo $title ?></title>
           <?php if ($inFolder == true): ?>
             <link rel="stylesheet" href="../css/style.css">
+            <script src="../js/toUppercase.js" charset="utf-8"></script>
           <?php else: ?>
             <link rel="stylesheet" href="css/style.css">
+            <script src="js/toUppercase.js" charset="utf-8"></script>
           <?php endif; ?>
         </head>
         <body>
