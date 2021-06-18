@@ -30,7 +30,7 @@
 
       Wilt u dit bedrijf toegang geven om een account aan te maken?
       Klik de link:
-
+      http://localhost/cms-portfoliosite/account_maken.php
     ";
     $headers[] = "From: Portfoliosite account vrager";
 
