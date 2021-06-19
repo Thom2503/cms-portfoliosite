@@ -4,6 +4,14 @@
 
   $uuid = $_GET['id'];
 
+  if ($_SESSION['type'] == 1)
+  {
+    $bool = true;
+  } else
+  {
+    $bool = false;
+  }
+
   include "includes/html.php";
   include "includes/opleidingen.php";
   include "php/config.php";
@@ -47,7 +55,7 @@
   //naam van de opleiding met spaties eruit voor css classes
   $opleiding_naam = str_replace(' ', '', $opleidingen[$opleiding_id]);
 
-  display_header($rij['Naam']." ".$rij['Achternaam'], $rij['Naam']." ".$rij['Achternaam'], true, false, $rij['UserID']);
+  display_header($rij['Naam']." ".$rij['Achternaam'], $rij['Naam']." ".$rij['Achternaam'], true, false, $bool, $rij['UserID']);
 
   ?>
     <main>
