@@ -9,6 +9,7 @@
 
   include "../includes/html.php";
   include "../includes/email.php";
+  include "../includes/send_mail.php";
   include "config.php";
 
   //function om errors makkelijker te maken. en maakt het wat mooier uitzien
@@ -18,7 +19,7 @@
     echo "<button onclick='history.back(); return false;'>Ga terug</button>";
   }
 
-  function send_mail($bedrijf, $voornaam, $achternaam, $email)
+  function sendMail($bedrijf, $voornaam, $achternaam, $email)
   {
     $to_email = "thomveldhuis03@gmail.com";
     $subject = "Aanvraag account voor Portfoliosite - $bedrijf";

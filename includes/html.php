@@ -24,8 +24,9 @@
           <header>
             <h1>Portfoliosite</h1>
             <?php if ($log == true): ?>
-                <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">Loguit</a>  <?php echo "for ".$name ?>
-                <a style="position: relative; font-size: 18px; line-height: 8px;" href="student.php?id=<?php echo $uuid ?>"><?php echo $name ?></a>
+                <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">Loguit</a>  <?php echo "for ".$name ?> |
+                <a style="position: relative; font-size: 18px; line-height: 8px;" href="user.php?id=<?php echo $uuid ?>">Mijn pagina</a> |
+                <a style="position: relative; font-size: 18px; line-height: 8px;" href="project_toevoegen.php?id=<?php echo $uuid ?>">Project toevoegen</a> |
             <?php else: ?>
                 <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">Loguit</a>
             <?php endif; ?>

@@ -6,6 +6,28 @@
   border: 1px solid black;
 } */
 
+/* Kleuren voor de verschillende opleidingen */
+.Mediavormgeven {
+  color: rgba(228, 004, 040);
+}
+.CreativeProductie {
+  color: rgba(120, 063, 145);
+}
+.Mediamanagement {
+  color: rgba(245, 156, 000);
+}
+.Redactiemedewerker {
+  color: rgba(231, 049, 136);
+}
+.Mediatechnologie {
+  color: rgba(000, 099, 175);
+}
+.AudiovisueleMedia{
+  color: rgba(255, 221, 000);
+}
+.Podium-enevenemententechniek {
+  color: rgba(045, 184, 197);
+}
 @font-face {
   font-family: 'Nimbus Sans';
   src: url('../fonts/NimbusSan.ttf');
@@ -151,11 +173,19 @@ h2 {
   flex: 50%;
 }
 
-form {
+form, .userinfo {
   margin: 1.5em;
 }
 .centerAlign {
   position: relative;
   width: 300px;
   margin: 0 auto;
+}
+
+.about_text {
+  min-width: 500px;
+  max-width: 100%;
+  min-height: 50px;
+  height: 100%;
+  width: 100%;
 }
