@@ -10,7 +10,7 @@
     //Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
-    $fh = fopen('../config.txt','r');
+    $fh = fopen('../config.txt','r'); // is for the password it's in a txt file for safety measures
     while ($line = fgets($fh))
     {
       $password = $line;
