@@ -24,11 +24,11 @@
   }
 
   //query om gegevens te krijgen van beide bedrijven en studenten
-  $query = "SELECT * FROM `users`, `user_info` WHERE `UserID` = ?";
+  $query = "SELECT * FROM `users`, `user_info` WHERE `UserID` = ? AND `User_ID` = ?";
 
   if($stmt = mysqli_prepare($mysqli, $query))
   {
-    mysqli_stmt_bind_param($stmt, "s", $uuid);
+    mysqli_stmt_bind_param($stmt, "ss", $uuid, $uuid);
 
     if(!mysqli_stmt_execute($stmt))
     {
@@ -48,7 +48,8 @@
 	                     4 => "Redactiemedewerker",
                        5 => "Mediatechnologie",
                        6 => "Audiovisuele Media",
-                       7 => "Podium- en evenemententechniek");
+                       7 => "Podium- en evenemententechniek",
+                       8 => "Bedrijf");
 
   //user opleiding id variable
   $opleiding_id = $rij['Opleiding_ID'];

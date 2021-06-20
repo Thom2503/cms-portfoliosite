@@ -37,21 +37,24 @@
             $over = htmlspecialchars($_POST['over'], ENT_QUOTES);
 
             $type = 3; //types zijn in dit geval om te kijken wat voor gebruiker het is. 1: student, 2: leraar/admin, 3: bedrijf
+            $zero = 8;
 
             if(!empty($voornaam) || !empty($achternaam) || !empty($email) || !empty($password) ||
                 !empty($gebruikersnaam) || !empty($opleiding) || !empty($over))
             {
               if (email_validate($email))
-              }
+              {
 
                   //stmt is for adding to the user table.
                   //stmt2 is for adding the rest of the info to the user_about table.
+
+                  echo $uuid, $type, $voornaam, $achternaam, $email, $gebruikersnaam, $password, $zero;
 
                   $stmt = mysqli_prepare($mysqli, 'INSERT INTO `users`
                     (`UserID`, `Type`, `Naam`, `Achternaam`, `Email`, `Username`, `Password`, `Opleiding_ID`)
                     VALUES (?,?,?,?,?,?,?,?)');
 
-									mysqli_stmt_bind_param($stmt, 'sisssssi', $uuid, $type, $voornaam, $achternaam, $email, $gebruikersnaam, $password, NULL);
+									mysqli_stmt_bind_param($stmt, 'sisssssi', $uuid, $type, $voornaam, $achternaam, $email, $gebruikersnaam, $password, $zero);
 
 									mysqli_stmt_execute($stmt);
 
@@ -79,7 +82,7 @@
                       $_SESSION['uuid'] = $uuid;
                       $_SESSION['type'] = $type;
 
-                      header("location: ../user.php?id=".$uuid);
+                      // header("location: ../user.php?id=".$uuid);
 
                       mysqli_stmt_close($stmt);
 

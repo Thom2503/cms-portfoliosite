@@ -3,7 +3,6 @@
   session_start();
 
   include "includes/html.php";
-  include "includes/opleidingen.php";
 
   display_header(NULL, "Account maken bedrijf", false);
 
@@ -30,7 +29,7 @@
             <h3>> Gebruikersnaam</h3>
             <input style="width: 300px; height: 50px;" type="text" name="gebruikersnaam" placeholder="Gebruikersnaam" required>
             <h3 hidden disabled>> Gebruikersnaam</h3>
-            <input style="width: 300px; height: 50px;" hidden disabled type="text" name="gebruikersnaam" placeholder="Gebruikersnaam" required>
+            <input style="width: 300px; height: 50px;" hidden disabled type="text">
           </div>
         </div>
         <h3>> Over bedrijf</h3>

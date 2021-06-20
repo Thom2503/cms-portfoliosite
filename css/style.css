@@ -28,6 +28,9 @@
 .Podium-enevenemententechniek {
   color: rgba(045, 184, 197);
 }
+.Bedrijf {
+  color: #8fe507;
+}
 @font-face {
   font-family: 'Nimbus Sans';
   src: url('../fonts/NimbusSan.ttf');
