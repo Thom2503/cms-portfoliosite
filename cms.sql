@@ -56,7 +56,8 @@ INSERT INTO `opleiding` (`OpleidingID`, `Naam`) VALUES
 (4, 'Redactiemedewerker'),
 (5, 'Mediatechnologie'),
 (6, 'Audiovisuele Media'),
-(7, 'Podium- en evenemententechniek');
+(7, 'Podium- en evenemententechniek'),
+(8, 'Bedrijf');
 
 -- --------------------------------------------------------
 
