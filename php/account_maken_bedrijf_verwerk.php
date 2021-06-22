@@ -13,11 +13,16 @@
   include "config.php";
 
   //function om errors makkelijker te maken. en maakt het wat mooier uitzien
-  function error($message)
-  {
-    echo $message."<br>";
-    echo "<button onclick='history.back(); return false;'>Ga terug</button>";
-  }
+  // function error($message)
+  // {
+  //   echo $message."<br>";
+  //   echo "<button onclick='history.back(); return false;'>Ga terug</button>";
+  // }
+
+  //mooie manier van een functie schrijven die wat kleiner is zoals deze:
+
+  $error = fn($message) => $message."<br>"."<button onclick='history.back(); return false;'>Ga terug</button>";
+
   $uuid = uuidv4(); //uuid voor een unique id. Komt van uuid.php
 
   display_header($name = NULL, "Account maken verwerken...", $log = false, $inFolder = true); //functie voor de rand html, is simpel for mooiheid
@@ -102,7 +107,8 @@
                   }
               } else
               {
-                error("Emailadres klopt niet!");
+                // error("Emailadres klopt niet!");
+                echo $error("Emailadres klopt niet!");
               }
             } else
             {
