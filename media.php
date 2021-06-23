@@ -69,7 +69,7 @@
           } else
           {
             ?>
-              <video src="uploads/<?php echo $rij['Name'] ?>" autoplay>
+              <video style="display: block; margin: 0 auto; width: 30em;" src="uploads/<?php echo $rij['Name'] ?>" autoplay>
                 Your browser can't support videos
               </video>
             <?php
