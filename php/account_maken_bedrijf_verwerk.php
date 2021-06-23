@@ -106,7 +106,7 @@
               } else
               {
                 // error("Emailadres klopt niet!");
-                echo $error("Emailadres klopt niet!");
+                error("Emailadres klopt niet!");
               }
             } else
             {
