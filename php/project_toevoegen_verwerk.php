@@ -12,7 +12,6 @@
 	//de datum van nu zodat het bij gehouden kan worden in het log
 	$date = date('m/d/Y h:i:s a', time());
 
-  include "../includes/email.php";
   include "../includes/uuid.php";
   include "../includes/html.php";
   include "config.php";
@@ -88,11 +87,11 @@
                   if (!$result && !$result2 && $uploaded)
                   {
 
-                    header("location: ../user.php?id=".$userid);
-
                     mysqli_stmt_close($stmt);
 
                     mysqli_stmt_close($stmt2);
+
+                    header("location: ../user.php?id=".$userid);
 
                   }else
                   {

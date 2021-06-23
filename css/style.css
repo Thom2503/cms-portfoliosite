@@ -176,7 +176,7 @@ h2 {
   flex: 50%;
 }
 
-form, .userinfo {
+form, .userinfo, .project_info {
   margin: 1.5em;
 }
 .centerAlign {
@@ -228,4 +228,12 @@ form, .userinfo {
   line-height: 33px;
 
   color: #000000;
+}
+
+.bestand {
+  display: block;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 15px;
+  text-align: center;
 }
