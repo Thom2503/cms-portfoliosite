@@ -41,14 +41,15 @@
 
   ?>
     <main>
-      <form class="form" action="php/project_toevoegen_verwerk.php" method="post">
+      <form class="form" action="php/project_toevoegen_verwerk.php" enctype="multipart/form-data" method="post">
         <a href="javascript:history.back()">> TERUG</a>
         <h2>> Project toevoegen</h2>
         <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"/>
+        <input type="hidden" name="userid" value="<?php echo $rij['UserID']; ?>"/>
         <h3>> Titel</h3>
         <input style="width: 300px; height: 50px;" type="text" name="titel" placeholder="Titel" required>
         <h3>> Omschrijving</h3>
-        <textarea name="over" rows="8" cols="80" placeholder="Omschrijving" required></textarea>
+        <textarea name="omschrijving" rows="8" cols="80" placeholder="Omschrijving" required></textarea>
         <h3>> Bestand</h3>
         <input class="bestanden" style="width: 300px; height: 50px;" type="file" name="bestand" required>
         <div class="hide">Je kan alleen; PNG, JPG, JPEG, GIF, MP4 en PDF toevoegen.</div>

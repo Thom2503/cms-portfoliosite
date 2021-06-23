@@ -25,12 +25,20 @@
             <h1>Portfoliosite</h1>
             <?php if ($log == true): ?>
                 <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">Loguit</a>  <?php echo "for ".$name ?> |
-                <a style="position: relative; font-size: 18px; line-height: 8px;" href="user.php?id=<?php echo $uuid ?>">Mijn pagina</a> |
+                <?php if ($inFolder == true): ?>
+                  <a style="position: relative; font-size: 18px; line-height: 8px;" href="../user.php?id=<?php echo $uuid ?>">Mijn pagina</a> |
+                <?php else: ?>
+                  <a style="position: relative; font-size: 18px; line-height: 8px;" href="user.php?id=<?php echo $uuid ?>">Mijn pagina</a> |
+                <?php endif; ?>
                 <?php if ($isStudent == true): ?>
                   <a style="position: relative; font-size: 18px; line-height: 8px;" href="project_toevoegen.php?id=<?php echo $uuid ?>">Project toevoegen</a> |
                 <?php endif; ?>
             <?php else: ?>
+              <?php if ($inFolder == true): ?>
+                <a style="position: relative; font-size: 18px; line-height: 8px;" href="../logout.php">Loguit</a>
+              <?php else: ?>
                 <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">Loguit</a>
+              <?php endif; ?>
             <?php endif; ?>
           </header>
     <?php

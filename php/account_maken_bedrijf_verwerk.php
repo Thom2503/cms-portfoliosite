@@ -49,8 +49,6 @@
                   //stmt is for adding to the user table.
                   //stmt2 is for adding the rest of the info to the user_about table.
 
-                  echo $uuid, $type, $voornaam, $achternaam, $email, $gebruikersnaam, $password, $zero;
-
                   $stmt = mysqli_prepare($mysqli, 'INSERT INTO `users`
                     (`UserID`, `Type`, `Naam`, `Achternaam`, `Email`, `Username`, `Password`, `Opleiding_ID`)
                     VALUES (?,?,?,?,?,?,?,?)');
@@ -85,7 +83,7 @@
                       $_SESSION['uuid'] = $uuid;
                       $_SESSION['type'] = $type;
 
-                      // header("location: ../user.php?id=".$uuid);
+                      header("location: ../user.php?id=".$uuid);
 
                       mysqli_stmt_close($stmt);
 
