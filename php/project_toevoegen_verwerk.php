@@ -47,7 +47,7 @@
             if(!empty($titel) || !empty($omschrijving) || !empty($fileName) || !empty($userid))
             {
               if ($fileType == 'image/jpg' ||
-                  $fileType == 'image/jpeg' ||
+                  $fileType == 'image/jpeg'||
                   $fileType == 'image/png' ||
                   $fileType == 'image/gif' ||
                   $fileType == 'video/mp4' ||
@@ -61,7 +61,7 @@
                 $stmt = mysqli_prepare($mysqli, 'INSERT INTO `project`(`ID`, `Titel`, `Omschrijving`, `Datum`, `User_ID`)
                 VALUES (?,?,?,?,?)');
 
-                mysqli_stmt_bind_param($stmt, 'sssss', $uuid, $titel, $omschrijving, date('m/d/Y', time()), $userid);
+                mysqli_stmt_bind_param($stmt, 'sssss', $uuid, $titel, $omschrijving, date("Y-m-d"), $userid);
 
                 mysqli_stmt_execute($stmt);
 

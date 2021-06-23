@@ -67,6 +67,37 @@
           <?php echo $rij['About'] ?>
         </div>
         <h2>> Projecten</h2>
+        <div class="projects">
+          <?php
+          //query om gegevens te krijgen van beide bedrijven en studenten
+          $query1 = "SELECT * FROM `project` WHERE `User_ID` = ?";
+
+          if($stmt1 = mysqli_prepare($mysqli, $query1))
+          {
+            mysqli_stmt_bind_param($stmt1, "s", $uuid);
+
+            if(!mysqli_stmt_execute($stmt1))
+            {
+              error("Er is iets fout gegaan met het verbinden met de database probeer het later opnieuw!");
+            } else
+            {
+              $result1 = mysqli_stmt_get_result($stmt1);
+
+              foreach ($result1 as $row)
+              {
+                ?>
+                  <a href="project.php?id=<?php echo $row['ID'] ?>">
+                    <div class="project">
+                      <h3 class="<?php echo $opleiding_naam ?>"><?php echo $row['Titel'] ?></h3>
+                      <p class="Omschrijving"><?php echo substr($row['Omschrijving'], 0, 128)."..." ?></p>
+                    </div>
+                  </a>
+                <?php
+              }
+            }
+          }
+          ?>
+        </div>
       </div>
     </main>
   <?php

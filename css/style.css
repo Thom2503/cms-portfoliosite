@@ -193,10 +193,39 @@ form, .userinfo {
   width: 100%;
 }
 
+.projecten {
+  min-width: 500px;
+  max-width: 100%;
+  width: 100%;
+}
+
 .hide {
   display: none;
 }
 
 .bestanden:hover + .hide {
   display: block;
+}
+
+/* Rectangle 7 */
+.project {
+  width: 750px;
+  height: 155px;
+
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+
+/* Titel Omschrijving */
+.Omschrijving {
+  width: 710px;
+  height: 130px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
 }
