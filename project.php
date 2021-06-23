@@ -24,11 +24,13 @@
   }
 
   //query om gegevens te krijgen van beide bedrijven en studenten
-  $query = "SELECT * FROM `project`, `media` WHERE `User_ID` = ? AND `Project_ID` = ?";
+  $query = "SELECT media.Type, media.Name, media.Project_ID, project.ID, project.Titel,
+  project.Omschrijving, project.Datum, project.User_ID FROM `media`, `project` WHERE `Project_ID` = project.`ID`
+  AND project.`ID` = ? AND media.`Project_ID` = ?";
 
   if($stmt = mysqli_prepare($mysqli, $query))
   {
-    mysqli_stmt_bind_param($stmt, "ss", $_SESSION['uuid'], $uuid);
+    mysqli_stmt_bind_param($stmt, "ss", $uuid, $uuid);
 
     if(!mysqli_stmt_execute($stmt))
     {
@@ -46,12 +48,16 @@
   ?>
     <main>
       <div class="project_info">
-        <a href="javascript:history.back()">> TERUG</a>
+        <a href="javascript:history.back()">> Terug</a>
         <h2>><?php echo " ".$rij['Titel'] ?></h2>
         <div class="omschrijving">
           <p><?php echo $rij['Omschrijving'] ?></p>
         </div>
-        <a class="bestand" href="media.php?name=<?php echo $rij['Name'] ?>">Bestand</a>
+        <a class="bestand" href="media.php?name=<?php echo $rij['Name'] ?>">Bestand</a><br>
+        <?php if ($uuid == $_SESSION['uuid'] || $rij['User_ID'] == $_SESSION['uuid']): ?>
+          <a class="bestand" style="color: #8fe507;" href="project_aanpassen.php?id=<?php echo $rij['Project_ID'] ?>">Aanpassen</a><br>
+          <a class="bestand" style="color: rgba(228, 004, 040);" href="project_verwijderen.php?id=<?php echo $rij['Project_ID'] ?>">Verwijderen</a>
+        <?php endif; ?>
       </div>
     </main>
   <?php

@@ -42,7 +42,7 @@
   ?>
     <main>
       <form class="form" action="php/project_toevoegen_verwerk.php" enctype="multipart/form-data" method="post">
-        <a href="javascript:history.back()">> TERUG</a>
+        <a href="javascript:history.back()">> Terug</a>
         <h2>> Project toevoegen</h2>
         <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"/>
         <input type="hidden" name="userid" value="<?php echo $rij['UserID']; ?>"/>
