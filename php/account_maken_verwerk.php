@@ -89,6 +89,8 @@
                     {
                       //sessions om later te gebruiken.
                       $_SESSION['username'] = $gebruikersnaam;
+                      $_SESSION['voornaam'] = $voornaam;
+                      $_SESSION['achternaam'] = $achternaam;
                       $_SESSION['uuid'] = $uuid;
                       $_SESSION['type'] = $type;
                       $_SESSION['Opleiding_ID'] = $ID;
