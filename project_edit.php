@@ -55,7 +55,7 @@
       <?php if ($usage == "bewerken"): ?>
         <form class="form" action="php/project_aanpassen.php" enctype="multipart/form-data" method="post">
           <a href="javascript:history.back()">> Terug</a>
-          <h2>> Project toevoegen</h2>
+          <h2>> Project aanpassen</h2>
           <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"/>
           <input type="hidden" name="userid" value="<?php echo $rij['User_ID']; ?>"/>
           <h3>> Titel</h3>
@@ -70,7 +70,7 @@
       <?php else: ?>
         <form class="form" action="php/project_verwijderen.php" enctype="multipart/form-data" method="post">
           <a href="javascript:history.back()">> Terug</a>
-          <h2>> Project toevoegen</h2>
+          <h2>> Project verwijderen</h2>
           <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"/>
           <input type="hidden" name="userid" value="<?php echo $rij['User_ID']; ?>"/>
           <input type="hidden" name="uuid" value="<?php echo $uuid ?>"/>
