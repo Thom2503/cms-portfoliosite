@@ -36,7 +36,7 @@
       <div class="userinfo">
         <h2>> Homepagina</h2>
         <select id="myBtnContainer">
-          <option class="btn active" selected onload="filterSelection('all')" onclick="filterSelection('all')">Alle studenten</option>
+          <option class="btn active" selected onclick="filterSelection('all')">Alle studenten</option>
           <?php foreach ($opleidingen2 as $id): ?>
             <option class="btn" onclick="filterSelection('<?php echo $id ?>')"><?php echo $id ?></option>
           <?php endforeach; ?>
