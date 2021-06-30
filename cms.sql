@@ -90,14 +90,6 @@ CREATE TABLE `users` (
   `Opleiding_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`UserID`, `Type`, `Naam`, `Achternaam`, `Email`, `Username`, `Password`, `Opleiding_ID`) VALUES
-('5cd2c77e-8eb1-4b39-91c6-8c3a44966f47', 1, 'Thom', 'Veldhuis', '84843@glr.nl', 'Thom2503', '$2y$10$JIyTTL0ngP/nUxhTHw/xX.uT29nKDjcDskIMjcpMgCQfQP0EQ1zq6', 5),
-('6fbd1256-b4cd-4f89-8500-53b97f79b366', 3, 'Jan', 'Smit', '84843@glr.nl', 'JanSmit1234', '$2y$10$fUgkr9Kw0Vr.pk7olWQ1TOeGGkMIqI29RhxASqW/9Ut3go7FhwxhK', 8);
-
 -- --------------------------------------------------------
 
 --
@@ -110,13 +102,6 @@ CREATE TABLE `user_info` (
   `About` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `user_info`
---
-
-INSERT INTO `user_info` (`ID`, `User_ID`, `About`) VALUES
-(1, '5cd2c77e-8eb1-4b39-91c6-8c3a44966f47', 'Ik ben Thom en ik doe Mediatechnologie.'),
-(3, '6fbd1256-b4cd-4f89-8500-53b97f79b366', 'Wij maken games voor het mobiele platform');
 
 --
 -- Indexes for dumped tables
