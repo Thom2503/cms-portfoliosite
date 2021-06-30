@@ -10,13 +10,16 @@
       <html lang="nl" dir="ltr">
         <head>
           <meta charset="utf-8">
+          <link rel="icon" href="https://1190327580.rsc.cdn77.org/sites/bd_glr_nl/themes/glr/images/site-logo-2020-v4.png">
           <title><?php echo $title ?></title>
           <?php if ($inFolder == true): ?>
             <link rel="stylesheet" href="../css/style.css">
             <script src="../js/toUppercase.js" charset="utf-8"></script>
+            <script src="../js/filter.js" charset="utf-8"></script>
           <?php else: ?>
             <link rel="stylesheet" href="css/style.css">
             <script src="js/toUppercase.js" charset="utf-8"></script>
+            <script src="js/filter.js" charset="utf-8"></script>
           <?php endif; ?>
         </head>
         <body>
@@ -26,8 +29,10 @@
             <?php if ($log == true): ?>
                 <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">> Loguit</a>  <?php echo "for ".$name ?> |
                 <?php if ($inFolder == true): ?>
+                  <a style="position: relative; font-size: 18px; line-height: 8px;" href="../homepage.php">> Homepagina</a> |
                   <a style="position: relative; font-size: 18px; line-height: 8px;" href="../user.php?id=<?php echo $uuid ?>">> Mijn pagina</a> |
                 <?php else: ?>
+                  <a style="position: relative; font-size: 18px; line-height: 8px;" href="homepage.php">> Homepagina</a> |
                   <a style="position: relative; font-size: 18px; line-height: 8px;" href="user.php?id=<?php echo $uuid ?>">> Mijn pagina</a> |
                 <?php endif; ?>
                 <?php if ($isStudent == true): ?>

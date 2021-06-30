@@ -237,3 +237,17 @@ form, .userinfo, .project_info {
   border-radius: 15px;
   text-align: center;
 }
+
+.container {
+  overflow: hidden;
+}
+
+.filterDiv {
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
