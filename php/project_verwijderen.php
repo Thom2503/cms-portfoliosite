@@ -40,9 +40,6 @@
 
             if(!empty($titel) || !empty($omschrijving) || !empty($fileName) || !empty($userid))
             {
-                //DELETE a.*, b.*
-//FROM media as a, project as b
-//WHERE a.Project_ID = "9292fa80-6f75-4564-9fe9-972b06392d27" and b.ID = "9292fa80-6f75-4564-9fe9-972b06392d27"
                 $stmt = mysqli_prepare($mysqli, 'DELETE FROM project
                   WHERE project.ID = ?');
 
