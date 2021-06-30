@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 07:54 PM
+-- Generation Time: Jun 30, 2021 at 04:46 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.22
 
@@ -90,6 +90,14 @@ CREATE TABLE `users` (
   `Opleiding_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `Type`, `Naam`, `Achternaam`, `Email`, `Username`, `Password`, `Opleiding_ID`) VALUES
+('5cd2c77e-8eb1-4b39-91c6-8c3a44966f47', 1, 'Thom', 'Veldhuis', '84843@glr.nl', 'Thom2503', '$2y$10$JIyTTL0ngP/nUxhTHw/xX.uT29nKDjcDskIMjcpMgCQfQP0EQ1zq6', 5),
+('6fbd1256-b4cd-4f89-8500-53b97f79b366', 3, 'Jan', 'Smit', '84843@glr.nl', 'JanSmit1234', '$2y$10$fUgkr9Kw0Vr.pk7olWQ1TOeGGkMIqI29RhxASqW/9Ut3go7FhwxhK', 8);
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +109,14 @@ CREATE TABLE `user_info` (
   `User_ID` char(36) NOT NULL,
   `About` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_info`
+--
+
+INSERT INTO `user_info` (`ID`, `User_ID`, `About`) VALUES
+(1, '5cd2c77e-8eb1-4b39-91c6-8c3a44966f47', 'Ik ben Thom en ik doe Mediatechnologie.'),
+(3, '6fbd1256-b4cd-4f89-8500-53b97f79b366', 'Wij maken games voor het mobiele platform');
 
 --
 -- Indexes for dumped tables
@@ -148,19 +164,19 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `opleiding`
 --
 ALTER TABLE `opleiding`
-  MODIFY `OpleidingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `OpleidingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -170,7 +186,7 @@ ALTER TABLE `user_info`
 -- Constraints for table `media`
 --
 ALTER TABLE `media`
-  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Project_ID`) REFERENCES `project` (`ID`);
+  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Project_ID`) REFERENCES `project` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `project`

@@ -22,8 +22,6 @@
     echo "<button onclick='history.back(); return false;'>Ga terug</button>";
   }
 
-  $uuid = uuidv4(); //uuid voor een unique id. Komt van uuid.php
-
   display_header($_SESSION['voornaam']." ".$_SESSION['achternaam'], "Projecten verwerken...", true, true, false, $_SESSION['uuid']); //functie voor de rand html, is simpel for mooiheid
 
   ?>
@@ -31,63 +29,37 @@
       <?php
         if (isset($_SESSION['token']) && $_SESSION['token'] == $_POST['csrf_token'])
         {
-          if (isset($_POST['toevoegen']))
+          if (isset($_POST['verwijderen']))
           {
             $titel = htmlspecialchars($_POST['titel'], ENT_QUOTES);
             $omschrijving = htmlspecialchars($_POST['omschrijving'], ENT_QUOTES);
             $userid = htmlspecialchars($_POST['userid'], ENT_QUOTES);
-            //alle file dingetjes
-            $fileTmpPath = $_FILES['bestand']['tmp_name'];
-            //naam om verschillen van elkaar te houden
-            $fileName = $titel."-".$_SESSION['achternaam'].$_SESSION['achternaam'].$_FILES['bestand']['name'];
+            $uuid = htmlspecialchars($_POST['uuid'], ENT_QUOTES);
+            $fileName = htmlspecialchars($_POST['old'], ENT_QUOTES);
             $filePath = "../uploads/".$fileName;
-            $fileType = $_FILES['bestand']['type'];
 
             if(!empty($titel) || !empty($omschrijving) || !empty($fileName) || !empty($userid))
             {
-              if ($fileType == 'image/jpg' ||
-                  $fileType == 'image/jpeg'||
-                  $fileType == 'image/png' ||
-                  $fileType == 'image/gif' ||
-                  $fileType == 'video/mp4' ||
-                  $fileType == 'application/pdf')
-              {
-                //stmt is for adding to the project table.
-                //stmt2 is for adding the media into the media table.
+                //DELETE a.*, b.*
+//FROM media as a, project as b
+//WHERE a.Project_ID = "9292fa80-6f75-4564-9fe9-972b06392d27" and b.ID = "9292fa80-6f75-4564-9fe9-972b06392d27"
+                $stmt = mysqli_prepare($mysqli, 'DELETE FROM project
+                  WHERE project.ID = ?');
 
-                $stmt = mysqli_prepare($mysqli, 'INSERT INTO `project`(`ID`, `Titel`, `Omschrijving`, `Datum`, `User_ID`)
-                VALUES (?,?,?,?,?)');
-
-                mysqli_stmt_bind_param($stmt, 'sssss', $uuid, $titel, $omschrijving, date("Y-m-d"), $userid);
+                mysqli_stmt_bind_param($stmt, 's', $uuid);
 
                 mysqli_stmt_execute($stmt);
 
                 $result = mysqli_stmt_get_result($stmt);
 
-                mysqli_stmt_execute($stmt);
-
-                // ------------=Dit hier is allemaal stmt2=------------------
-                $stmt2 = mysqli_prepare($mysqli, 'INSERT INTO `media`(`Type`, `Name`, `Project_ID`)
-                VALUES (?,?,?)');
-
-                mysqli_stmt_bind_param($stmt2, 'sss', $fileType, $fileName, $uuid);
-
-                mysqli_stmt_execute($stmt2);
-
-                $result2 = mysqli_stmt_get_result($stmt2);
-
-                mysqli_stmt_execute($stmt2);
-
-                $uploaded = move_uploaded_file($fileTmpPath, $filePath);
-
                 try
                 {
-                  if (!$result && !$result2 && $uploaded)
+                  if (!$result)
                   {
 
-                    mysqli_stmt_close($stmt);
+                    unlink($filePath);
 
-                    mysqli_stmt_close($stmt2);
+                    mysqli_stmt_close($stmt);
 
                     header("location: ../user.php?id=".$userid);
 
@@ -103,10 +75,6 @@
                 {
                   echo $e->getMessage();
                 }
-              } else
-              {
-                error("Het bestand wat je probeerde te uploaden word niet geaccepteerd!");
-              }
             } else
             {
               error("Sommige velden zijn leeg gelaten!");

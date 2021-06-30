@@ -55,8 +55,8 @@
         </div>
         <a class="bestand" href="media.php?name=<?php echo $rij['Name'] ?>">Bestand</a><br>
         <?php if ($uuid == $_SESSION['uuid'] || $rij['User_ID'] == $_SESSION['uuid']): ?>
-          <a class="bestand" style="color: #8fe507;" href="project_aanpassen.php?id=<?php echo $rij['Project_ID'] ?>">Aanpassen</a><br>
-          <a class="bestand" style="color: rgba(228, 004, 040);" href="project_verwijderen.php?id=<?php echo $rij['Project_ID'] ?>">Verwijderen</a>
+          <a class="bestand" style="color: #8fe507;" href="project_edit.php?id=<?php echo $rij['Project_ID'] ?>&e=edit">Aanpassen</a><br>
+          <a class="bestand" style="color: rgba(228, 004, 040);" href="project_edit.php?id=<?php echo $rij['Project_ID'] ?>&e=delete">Verwijderen</a>
         <?php endif; ?>
       </div>
     </main>
