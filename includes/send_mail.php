@@ -28,7 +28,7 @@
 
         //Recipients
         $mail->setFrom('toudoukirin7@gmail.com', 'Portfoliosite account vrager');
-        $mail->addAddress('thomveldhuis03@gmail.com');     //Add a recipient
+        $mail->addAddress('84843@glr.nl');     //Add a recipient
         $mail->addReplyTo('toudoukirin7@gmail.com', 'Portfoliosite account vrager');
 
         //Content
