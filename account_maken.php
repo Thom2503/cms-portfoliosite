@@ -32,7 +32,25 @@
             <h3>> Opleiding</h3>
             <select style="width: 300px; height: 50px;" name="opleiding" required>
               <option selected value="0">Kies een opleiding</option>
-              <?php getOpleidingen(); ?>
+              <?php
+                // getOpleidingen();
+                require "php/config.php";
+
+                $sql = "SELECT * FROM opleiding";
+
+                $result = mysqli_query($mysqli, $sql);
+
+                foreach($result as $rs)
+                {
+                  if ($rs['Naam'] == "Bedrijf")
+                  {
+                    echo "<option hidden value='".$rs['Naam']."'>".$rs['Naam']."</option>";
+                  } else
+                  {
+                    echo "<option value='".$rs['Naam']."'>".$rs['Naam']."</option>";
+                  }
+                }
+              ?>
             </select>
           </div>
         </div>
