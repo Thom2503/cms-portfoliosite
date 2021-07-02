@@ -32,7 +32,7 @@
                        7 => "Podium- en evenemententechniek");
 
   ?>
-    <main>
+    <main onload="filterSelection('all')">
       <div class="userinfo">
         <h2>> Homepagina</h2>
         <select id="myBtnContainer">
@@ -74,12 +74,14 @@
                   //naam van de opleiding met spaties eruit voor css classes
                   $opleiding_naam = str_replace(' ', '', $opleidingen[$opleiding_id]);
                   ?>
-                  <div class="container">
-                    <div class="filterDiv <?php echo $opleiding_naam ?>">
-                      <h3><?php echo $rij['Naam']." ".$rij['Achternaam'] ?></h3>
-                      <em class="<?php echo $opleiding_naam ?>"><?php echo $opleidingen[$opleiding_id] ?></em>
+                  <a href="user.php?id=<?php echo $rij['UserID'] ?>">
+                    <div class="container">
+                      <div class="filterDiv <?php echo $opleiding_naam ?>">
+                        <h3><?php echo $rij['Naam']." ".$rij['Achternaam'] ?></h3>
+                        <em class="<?php echo $opleiding_naam ?>"><?php echo $opleidingen[$opleiding_id] ?></em>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                   <?php
                 }
               } else

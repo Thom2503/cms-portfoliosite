@@ -22,7 +22,7 @@
             <script src="js/filter.js" charset="utf-8"></script>
           <?php endif; ?>
         </head>
-        <body>
+        <body onload="filterSelection('all')">
           <img class="logo" src="https://1190327580.rsc.cdn77.org/sites/bd_glr_nl/themes/glr/images/site-logo-2020-v4.png" alt="Logo van GLR">
           <header>
             <h1>Portfoliosite</h1>
