@@ -58,14 +58,16 @@
           <h2>> Project aanpassen</h2>
           <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"/>
           <input type="hidden" name="userid" value="<?php echo $rij['User_ID']; ?>"/>
+          <input type="hidden" name="uuid" value="<?php echo $uuid ?>"/>
+          <input type="hidden" name="old" value="<?php echo $rij['Name']; ?>"/>
           <h3>> Titel</h3>
           <input style="width: 300px; height: 50px;" type="text" name="titel" value="<?php echo $rij['Titel'] ?>" required>
           <h3>> Omschrijving</h3>
           <textarea name="omschrijving" rows="8" cols="80" required><?php echo $rij['Omschrijving'] ?></textarea>
           <h3>> Bestand</h3>
-          <input class="bestanden" style="width: 300px; height: 50px;" type="file" name="bestand" /> <span name="old" value="<?=$rij['Name']?>"><?php echo $rij['Name']?></span>
+          <input class="bestanden" style="width: 300px; height: 50px;" type="file" name="bestand" required/> <span name="old" value="<?=$rij['Name']?>"><?php echo $rij['Name']?></span>
           <div class="hide">Je kan alleen; PNG, JPG, JPEG, GIF, MP4 en PDF toevoegen.</div>
-          <input class="submit" type="Submit" name="verwijderen" value="Aanpassen">
+          <input class="submit" type="Submit" name="aanpassen" value="Aanpassen">
         </form>
       <?php else: ?>
         <form class="form" action="php/project_verwijderen.php" enctype="multipart/form-data" method="post">

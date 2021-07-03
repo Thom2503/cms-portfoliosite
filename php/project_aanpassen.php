@@ -21,18 +21,21 @@ function error($message)
     echo "<button onclick='history.back(); return false;'>Ga terug</button>";
 }
 
-$uuid = uuidv4(); //uuid voor een unique id. Komt van uuid.php
-
 display_header($_SESSION['voornaam'] . " " . $_SESSION['achternaam'], "Projecten verwerken...", true, true, false, $_SESSION['uuid']); //functie voor de rand html, is simpel for mooiheid
 
 ?>
 <main>
     <?php
-    if (isset($_SESSION['token']) && $_SESSION['token'] == $_POST['csrf_token']) {
-        if (isset($_POST['toevoegen'])) {
+    if (isset($_SESSION['token']) && $_SESSION['token'] == $_POST['csrf_token'])
+    {
+        if (isset($_POST['aanpassen']))
+        {
             $titel = htmlspecialchars($_POST['titel'], ENT_QUOTES);
             $omschrijving = htmlspecialchars($_POST['omschrijving'], ENT_QUOTES);
             $userid = htmlspecialchars($_POST['userid'], ENT_QUOTES);
+            $uuid = htmlspecialchars($_POST['uuid'], ENT_QUOTES);
+            $oldFile = htmlspecialchars($_POST['old'], ENT_QUOTES);
+            $oldFilePath = "../uploads/".$oldFile;
             //alle file dingetjes
             $fileTmpPath = $_FILES['bestand']['tmp_name'];
             //naam om verschillen van elkaar te houden
@@ -40,7 +43,8 @@ display_header($_SESSION['voornaam'] . " " . $_SESSION['achternaam'], "Projecten
             $filePath = "../uploads/" . $fileName;
             $fileType = $_FILES['bestand']['type'];
 
-            if (!empty($titel) || !empty($omschrijving) || !empty($fileName) || !empty($userid)) {
+            if (!empty($titel) || !empty($omschrijving) || !empty($fileName) || !empty($userid) || !empty($uuid) || !empty($oldFile))
+            {
                 if (
                     $fileType == 'image/jpg' ||
                     $fileType == 'image/jpeg' ||
@@ -48,14 +52,16 @@ display_header($_SESSION['voornaam'] . " " . $_SESSION['achternaam'], "Projecten
                     $fileType == 'image/gif' ||
                     $fileType == 'video/mp4' ||
                     $fileType == 'application/pdf'
-                ) {
-                    //stmt is for adding to the project table.
-                    //stmt2 is for adding the media into the media table.
+                )
+                {
+                    //stmt is for updating to the project table.
+                    //stmt2 is for updating the media into the media table.
+                    $date = date("Y-m-d");
 
-                    $stmt = mysqli_prepare($mysqli, 'INSERT INTO `project`(`ID`, `Titel`, `Omschrijving`, `Datum`, `User_ID`)
-                VALUES (?,?,?,?,?)');
+                    $stmt = mysqli_prepare($mysqli, 'UPDATE `project`
+                    SET `Titel` = ?,`Omschrijving` = ?,`Datum` = ? WHERE `User_ID` = ? AND `ID` = ?');
 
-                    mysqli_stmt_bind_param($stmt, 'sssss', $uuid, $titel, $omschrijving, date("Y-m-d"), $userid);
+                    mysqli_stmt_bind_param($stmt, 'sssss', $titel, $omschrijving, $date, $userid, $uuid);
 
                     mysqli_stmt_execute($stmt);
 
@@ -64,8 +70,7 @@ display_header($_SESSION['voornaam'] . " " . $_SESSION['achternaam'], "Projecten
                     mysqli_stmt_execute($stmt);
 
                     // ------------=Dit hier is allemaal stmt2=------------------
-                    $stmt2 = mysqli_prepare($mysqli, 'INSERT INTO `media`(`Type`, `Name`, `Project_ID`)
-                VALUES (?,?,?)');
+                    $stmt2 = mysqli_prepare($mysqli, 'UPDATE `media` SET `Type` = ?,`Name` = ? WHERE `Project_ID` = ?');
 
                     mysqli_stmt_bind_param($stmt2, 'sss', $fileType, $fileName, $uuid);
 
@@ -76,33 +81,41 @@ display_header($_SESSION['voornaam'] . " " . $_SESSION['achternaam'], "Projecten
                     mysqli_stmt_execute($stmt2);
 
                     $uploaded = move_uploaded_file($fileTmpPath, $filePath);
+                    $deleted = unlink($oldFilePath);
 
-                    try {
-                        if (!$result && !$result2 && $uploaded) {
+                    try
+                    {
+                        if (!$result && !$result2 && $uploaded && $deleted)
+                        {
 
                             mysqli_stmt_close($stmt);
 
                             mysqli_stmt_close($stmt2);
 
                             header("location: ../user.php?id=" . $userid);
-                        } else {
+                        } else
+                        {
                             // error message om er in te zetten
                             $error_message = $date . " Fout met het verbinden met de database\n";
                             // de daadwerkelijke error in het log file zetten
                             error_log($error_message, 3, $log_file);
                             throw new Exception(error('Sorry voor het ongemak er kan momenteel geen verbinding met de database gemaakt worden.'));
                         }
-                    } catch (Exception $e) {
+                    } catch (Exception $e)
+                    {
                         echo $e->getMessage();
                     }
-                } else {
+                } else
+                {
                     error("Het bestand wat je probeerde te uploaden word niet geaccepteerd!");
                 }
-            } else {
+            } else
+            {
                 error("Sommige velden zijn leeg gelaten!");
             }
         }
-    } else {
+    } else
+    {
         error("CRSF Token is incorrect!");
     }
     ?>
