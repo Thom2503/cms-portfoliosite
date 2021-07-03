@@ -84,16 +84,25 @@
               {
                 $result1 = mysqli_stmt_get_result($stmt1);
 
-                foreach ($result1 as $row)
+                if (mysqli_num_rows($result1) == 0)
                 {
                   ?>
-                    <a href="project.php?id=<?php echo $row['ID'] ?>">
-                      <div class="project">
-                        <h3 class="<?php echo $opleiding_naam ?>"><?php echo $row['Titel'] ?></h3>
-                        <p class="Omschrijving"><?php echo substr($row['Omschrijving'], 0, 128)."..." ?></p>
-                      </div>
-                    </a>
+                    <p>Je hebt nog geen projecten toegevoegd dat kan hier: </p>
+                    <a href="project_toevoegen.php?id=<?php echo $uuid ?>">Project toevoegen</a>
                   <?php
+                } else
+                {
+                  foreach ($result1 as $row)
+                  {
+                    ?>
+                      <a href="project.php?id=<?php echo $row['ID'] ?>">
+                        <div class="project">
+                          <h3 class="<?php echo $opleiding_naam ?>"><?php echo $row['Titel'] ?></h3>
+                          <p class="Omschrijving"><?php echo substr($row['Omschrijving'], 0, 128)."..." ?></p>
+                        </div>
+                      </a>
+                    <?php
+                  }
                 }
               }
             }

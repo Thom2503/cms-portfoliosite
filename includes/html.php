@@ -27,7 +27,7 @@
           <header>
             <h1>Portfoliosite</h1>
             <?php if ($log == true): ?>
-                <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">> Loguit</a>  <?php echo "for ".$name ?> |
+                <a style="position: relative; font-size: 18px; line-height: 8px;" href="logout.php">> Loguit</a>  <?php echo "voor ".$name ?> |
                 <?php if ($inFolder == true): ?>
                   <a style="position: relative; font-size: 18px; line-height: 8px;" href="../homepage.php">> Homepagina</a> |
                   <a style="position: relative; font-size: 18px; line-height: 8px;" href="../user.php?id=<?php echo $uuid ?>">> Mijn pagina</a> |
